@@ -1,10 +1,11 @@
-from fastapi import FastAPI #Trae la erramienta principal de fastapi
-from app.modules.users.router import router as users_router
+from fastapi import FastAPI
+from app.api.routes import register_routes
 
-app = FastAPI() #crea la app
+app = FastAPI()
 
-app.include_router(users_router) #conecta el router a la app
+register_routes(app)
 
-@app.get("/") #lo que se va a mostrar si se ingresa a la raiz del sistema
+
+@app.get("/")
 def root():
-    return {"message": "ALa Carta"}
+    return {"message": "Ala Carta"}
