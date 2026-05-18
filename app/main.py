@@ -1,5 +1,5 @@
 from fastapi import FastAPI #Trae la erramienta principal de fastapi
-from app.users.router import router as users_router
+from app.modules.users.router import router as users_router
 
 app = FastAPI() #crea la app
 
