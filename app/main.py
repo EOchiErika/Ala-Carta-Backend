@@ -1,9 +1,11 @@
 from fastapi import FastAPI
 from app.api.routes import register_routes
 from app.core.config import settings
-
-from app.core.database import engine
+from app.modules.users import model
+from app.core.database import engine, Base
 from sqlalchemy import text
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -29,3 +31,4 @@ def db_test():
     with engine.connect() as connection:
         result = connection.execute(text("SELECT 1"))
         return {"resultado": result.scalar()}
+    
